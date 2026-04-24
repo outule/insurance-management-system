@@ -68,4 +68,17 @@ public class Claim {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Claim{" +
+                "claimId='" + claimId + '\'' +
+                ", policyId='" + policyId + '\'' +
+                ", clientId='" + clientId + '\'' +
+                ", claimAmount=" + claimAmount +
+                ", claimDate=" + claimDate +
+                ", description='" + description + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

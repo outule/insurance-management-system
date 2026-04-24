@@ -77,4 +77,18 @@ public class Policy {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Policy{" +
+                "policyId='" + policyId + '\'' +
+                ", clientId='" + clientId + '\'' +
+                ", policyType='" + policyType + '\'' +
+                ", coverageAmount=" + coverageAmount +
+                ", premiumAmount=" + premiumAmount +
+                ", stateDate=" + stateDate +
+                ", endDate=" + endDate +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
