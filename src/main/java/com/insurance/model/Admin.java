@@ -50,4 +50,15 @@ public class Admin {
     public void setLastLogin(LocalDate lastLogin) {
         this.lastLogin = lastLogin;
     }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "adminId='" + adminId + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", lastLogin=" + lastLogin +
+                '}';
+    }
 }

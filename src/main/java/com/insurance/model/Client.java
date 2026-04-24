@@ -68,4 +68,17 @@ public class Client {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "clientId='" + clientId + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }
