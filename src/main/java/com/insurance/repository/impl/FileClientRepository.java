@@ -18,10 +18,15 @@ public class FileClientRepository implements ClientRepository {
 
     @Override
     public Client save(Client client) {
+        if (client == null) {
+            throw new IllegalArgumentException("client cannot be null");
+        }
+
         List<Client> clients = findAll();
 
         clients.removeIf(existingClient ->
-                existingClient.getClientId().equals(client.getClientId()));
+                client.getClientId() != null &&
+                        existingClient.getClientId().equals(client.getClientId()));
 
         clients.add(client);
 
@@ -41,7 +46,8 @@ public class FileClientRepository implements ClientRepository {
 
     @Override
     public List<Client> findAll() {
-        return JsonUtil.readList(filePath, new TypeReference<List<Client>>() {});
+        return JsonUtil.readList(filePath, new TypeReference<>() {
+        });
     }
 
     @Override
