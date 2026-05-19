@@ -23,11 +23,26 @@ public class ClientServiceImpl implements ClientService {
             throw new IllegalArgumentException("Client cannot be null");
         }
 
+        client.setFullName(client.getFullName().trim());
+        client.setEmail(client.getEmail().trim());
+        client.setPhone(client.getPhone().trim());
+        client.setAddress(client.getAddress().trim());
+
         validateClient(client);
 
         client.setClientId(IdGenerator.generateId());
         client.setDateCreated(LocalDate.now());
         client.setStatus(StatusConstants.ACTIVE);
+
+        boolean emailExist = clientRepository.findAll()
+                .stream()
+                .anyMatch(existingClient ->
+                        existingClient.getEmail()
+                                .equalsIgnoreCase(client.getEmail()));
+
+        if (emailExist) {
+            throw new IllegalArgumentException("Email already exists");
+        }
 
         return clientRepository.save(client);
     }
@@ -70,6 +85,9 @@ public class ClientServiceImpl implements ClientService {
         }
     }
 
+    /**
+     * Validates email format using regex.
+     */
     private void validateEmail(String email) {
         String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
 
