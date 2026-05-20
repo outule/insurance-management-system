@@ -132,9 +132,18 @@ public class MainMenu {
             System.out.print("Enter Client ID:");
             String id = scanner.nextLine();
 
-            clientService.delete(id);
+            System.out.println("Are you sure? (Y/N)");
+            char answer = scanner.next().toUpperCase().charAt(0);
+            scanner.nextLine();
 
-            System.out.println("Client deleted successfully!");
+            if (answer == 'Y') {
+                System.out.println("Client with ID: " + id + " deleted successfully!");
+                clientService.delete(id);
+            } else if (answer == 'N') {
+                System.out.println("Client with not deleted");
+            } else  {
+                System.out.println("Invalid input!");
+            }
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
