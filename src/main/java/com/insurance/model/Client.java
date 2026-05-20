@@ -71,14 +71,18 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
-                "clientId='" + clientId + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", dateCreated=" + dateCreated +
-                ", status='" + status + '\'' +
-                '}';
+        return """
+                
+                Client Information
+                ------------------
+                ID: %s
+                Name: %s
+                Email: %s
+                Phone: %s
+                Address: %s
+                Status: %s
+                Date Created: %s
+                """
+                .formatted(clientId, fullName, email, phone, address, status, dateCreated);
     }
 }
