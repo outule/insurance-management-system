@@ -23,10 +23,10 @@ public class ClientServiceImpl implements ClientService {
             throw new IllegalArgumentException("Client cannot be null");
         }
 
-        client.setFullName(client.getFullName().trim());
-        client.setEmail(client.getEmail().trim());
-        client.setPhone(client.getPhone().trim());
-        client.setAddress(client.getAddress().trim());
+        client.setFullName(normalizeInput(client.getFullName()));
+        client.setEmail(normalizeInput(client.getEmail()));
+        client.setPhone(normalizeInput(client.getPhone()));
+        client.setAddress(normalizeInput(client.getAddress()));
 
         validateClient(client);
 
@@ -106,5 +106,13 @@ public class ClientServiceImpl implements ClientService {
         if (phone == null || phone.isEmpty()) {
             throw new IllegalArgumentException("Phone number is required");
         }
+    }
+
+    private String normalizeInput(String input) {
+        if (input == null) {
+            return null;
+        }
+
+        return input.trim().replaceAll("\\s+", " ");
     }
 }
