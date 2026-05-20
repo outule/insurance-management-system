@@ -49,7 +49,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client findById(String id) {
-        if (id == null || !id.isBlank()) {
+        if (id == null || id.isBlank()) {
             throw new IllegalArgumentException("Client ID cannot be empty");
         }
 
@@ -63,8 +63,14 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void delete(String id) {
-        if (id == null || !id.isBlank()) {
+        if (id == null || id.isBlank()) {
             throw new IllegalArgumentException("Client ID cannot be empty");
+        }
+
+        Client existingClient = clientRepository.findById(id);
+
+        if (existingClient == null) {
+            throw new IllegalArgumentException("Client not found");
         }
 
         clientRepository.delete(id);
