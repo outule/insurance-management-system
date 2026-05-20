@@ -140,7 +140,7 @@ public class MainMenu {
                 System.out.println("Client with ID: " + id + " deleted successfully!");
                 clientService.delete(id);
             } else if (answer == 'N') {
-                System.out.println("Client with not deleted");
+                System.out.println("Client not deleted");
             } else  {
                 System.out.println("Invalid input!");
             }
